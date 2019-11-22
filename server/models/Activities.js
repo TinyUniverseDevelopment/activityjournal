@@ -1,26 +1,35 @@
 const mongoose = require('mongoose')
-
+const mongoosePaginate = require('mongoose-paginate');
 const activitiesSchema = new mongoose.Schema({
     activity: {
         type: String,
-        required: true
+        required: false
 
     },
     activityType: {
         type: String,
-        required: true
+        required: false
     },
     startTime: {
         type: String,
-        required: true
+        required: false
     },
     endTime: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,
         default: Date.now
+    },
+    month: {
+        type: Number
+    },
+    day: {
+        type: Number
+    },
+    time: {
+        type: Number
     }
 })
 
@@ -31,5 +40,7 @@ activitiesSchema.set('toJSON', {
         delete returnedObject.__V
     }
 })
+
+activitiesSchema.plugin(mongoosePaginate)
 
 module.exports = mongoose.model('Activity', activitiesSchema)
