@@ -9,6 +9,7 @@ import ShowActivity from './components/ShowActivity';
 import Header from './components/Header';
 import AddActivity from './components/AddActivity';
 import SortSelect from './components/SortSelect';
+import Chart from './components/Chart';
 import activityService from './service/activityservice';
 
 //Images
@@ -28,7 +29,6 @@ const App = () => {
 
   const [activitiesPage, setActivitiesPage] = useState([]);
   const [activityLength, setLength] = useState(0);
-  //const [typeColor, setTypeColor] = useState('');
   const [update, setUpdate] = useState(false);
   const [page, setPage] = useState(1);
 
@@ -115,6 +115,9 @@ const App = () => {
       <SortSelect setLength={setLength} setActivitiesPage={setActivitiesPage} />
       <div className='show-activities'>{displayActivities()}</div>
       <div>{displayPageNumbers()}</div>
+      <div>
+        <Chart />
+      </div>
 
       <AddActivity setUpdate={setUpdate} update={update} />
     </div>
