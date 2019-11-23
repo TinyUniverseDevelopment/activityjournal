@@ -43,7 +43,7 @@ const ShowActivity = ({ activity, pullActivities, setUpdate, update }) => {
       setUpdate(!update);
     }
   };
-  console.log(pullActivities);
+
   return (
     <div style={style.card_container} className='card_container'>
       <div style={style.card_top} className='card_top'>

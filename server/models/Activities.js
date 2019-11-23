@@ -30,6 +30,9 @@ const activitiesSchema = new mongoose.Schema({
     },
     time: {
         type: Number
+    },
+    countOfTypes: {
+        type: Object
     }
 })
 

@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const Activities = require('../models/Activities')
+const getTypeTotals = require('../actions/totalTypes')
+
+
 
 /*@GET 
   @get all activities from DB.
@@ -78,13 +81,18 @@ router.get('/paginate', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const body = req.body
+
   try {
+    const count = await getTypeTotals()
+    console.log(count)
     const activity = new Activities({
       activity: body.activity,
       activityType: body.activityType,
       startTime: body.startTime,
-      endTime: body.endTime
+      endTime: body.endTime,
+      countOfTypes: count
     })
+
     await activity.save()
     res.send('activity added')
   } catch (error) {
